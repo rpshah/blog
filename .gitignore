@@ -9,7 +9,9 @@ app/storage/
 bootstrap/cache/
 .env.*.php
 .env.php
+.env.testing
 .env
+
 
 # Rocketeer PHP task runner and deployment package. https://github.com/rocketeers/rocketeer
 .rocketeer/

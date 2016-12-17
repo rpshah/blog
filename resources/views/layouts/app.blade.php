@@ -8,10 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
-
-    <!-- Styles -->
-    <link href="/css/app.css" rel="stylesheet">
+    <title>{{ config('app.name', 'RPSHAH96.me ') . ' - ' }} @yield('title') </title>
 
     <!-- Scripts -->
     <script>
@@ -20,17 +17,22 @@
         ]); ?>
     </script>
 
+    @section('stylesheets')
       <!-- Latest compiled and minified CSS -->
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    @show
+
+    @section('scripts')
       <!-- jQuery library -->
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
       <!-- Latest compiled JavaScript -->
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    @show
 
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-default navbar-static-top">
+        <nav class="navbar navbar-inverse navbar-static-top">
             <div class="container">
                 <div class="navbar-header">
 
@@ -44,18 +46,30 @@
 
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('/') }}">
-                        {{ config('app.name', 'Laravel') }}
+                        {{ config('app.name', 'RPSHAH96.me') }}
                     </a>
                 </div>
 
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
-                        &nbsp;
-                    </ul>
+                        <li class="active"><a href="/blogs">My Blogs <span class="sr-only">(current)</span></a></li>
+                        <li><a href="#">Read </a></li>
+                        <li class="dropdown">
+                          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">New <span class="caret"></span></a>
+                          <ul class="dropdown-menu">
+                            <li><a href="#">Blog</a></li>
+                            <li><a href="#">Short News</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="#">Idiom / Shayari</a></li>
+                          </ul>
+                        </li>
+                    </ul>  <!--  End of .navbar-nav   -->
 
                     <!-- Right Side Of Navbar -->
                     <ul class="nav navbar-nav navbar-right">
+                        <li><a href="/about">About </a></li>
+                        <li><a href="/contact">Contact </a></li>
                         <!-- Authentication Links -->
                         @if (Auth::guest())
                             <li><a href="{{ url('/login') }}">Login</a></li>
@@ -81,15 +95,22 @@
                                 </ul>
                             </li>
                         @endif
-                    </ul>
+                    </ul> <!-- End of .navbar-right -->
                 </div>
             </div>
         </nav>
 
         @yield('content')
+
+        <div class="container-fluid">
+            <div class="col-md-6 col-md-offset-3">
+                <div class="well well-sm text-center">
+                    CopyRights @ {{ date('Y') }} . All Right Reserved by <a href="http://rpshah96.me"> rpshah96.me</a>
+                </div>
+            </div>
+        </div>
+
     </div>
 
-    <!-- Scripts -->
-    <script src="/js/app.js"></script>
 </body>
 </html>

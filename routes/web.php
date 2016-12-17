@@ -11,6 +11,10 @@
 |
 */
 
+Route::get('blogs', 'HomeController@showBlogsPage');
+Route::get('about', 'StaticPageController@showAboutPage');
+Route::get('contact', 'StaticPageController@showContactPage');
+
 Route::get('/', function () {
     return view('welcome');
 });
