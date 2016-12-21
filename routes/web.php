@@ -11,14 +11,15 @@
 |
 */
 
-Route::get('blogs', 'HomeController@showBlogsPage');
 Route::get('about', 'StaticPageController@showAboutPage');
 Route::get('contact', 'StaticPageController@showContactPage');
+
+//All CRUD activities as per laravel Doc for Posts
+Route::resource('post', 'PostController');
+
 
 Route::get('/', function () {
     return view('welcome');
 });
 
 Auth::routes();
-
-Route::get('/home', 'HomeController@index');

@@ -20,6 +20,7 @@
     @section('stylesheets')
       <!-- Latest compiled and minified CSS -->
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+      <link rel="stylesheet" type="text/css" href="/css/style.css">
     @show
 
     @section('scripts')
@@ -53,27 +54,39 @@
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
-                        <li class="active"><a href="/blogs">My Blogs <span class="sr-only">(current)</span></a></li>
-                        <li><a href="#">Read </a></li>
-                        <li class="dropdown">
-                          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">New <span class="caret"></span></a>
-                          <ul class="dropdown-menu">
-                            <li><a href="#">Blog</a></li>
-                            <li><a href="#">Short News</a></li>
-                            <li role="separator" class="divider"></li>
-                            <li><a href="#">Idiom / Shayari</a></li>
-                          </ul>
-                        </li>
+                        <li class="{{ Request::is('post/2') ? "active" : "" }}"><a href="#">Read </a></li>
+                        @if (Auth::check())
+                            <li class="{{ Request::is('post') ? "active" : "" }}" >
+                                <a href="{{ route('post.index') }}">My Blogs</a>
+                            </li>
+                            <li class="dropdown">
+                              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">New <span class="caret"></span></a>
+                              <ul class="dropdown-menu">
+                                <li><a href="{{ route('post.create') }}">Post</a></li>
+                                <li><a href="#">Short News</a></li>
+                                <li role="separator" class="divider"></li>
+                                <li><a href="#">Idiom / Shayari</a></li>
+                              </ul>
+                            </li>
+                        @endif
                     </ul>  <!--  End of .navbar-nav   -->
 
                     <!-- Right Side Of Navbar -->
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="/about">About </a></li>
-                        <li><a href="/contact">Contact </a></li>
+                        <li class="{{ Request::is('about') ? "active" : "" }}">
+                            <a href="{{ url('/about') }}">About </a>
+                        </li>
+                        <li class="{{ Request::is('contact') ? "active" : "" }}">
+                            <a href="{{ url('/contact') }}">Contact </a>
+                        </li>
                         <!-- Authentication Links -->
                         @if (Auth::guest())
-                            <li><a href="{{ url('/login') }}">Login</a></li>
-                            <li><a href="{{ url('/register') }}">Register</a></li>
+                            <li class="{{ Request::is('login') ? "active" : "" }}">
+                                <a href="{{ url('/login') }}">Login</a>
+                            </li>
+                            <li class="{{ Request::is('register') ? "active" : "" }}">
+                                <a href="{{ url('/register') }}">Register</a>
+                            </li>
                         @else
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
@@ -100,12 +113,18 @@
             </div>
         </nav>
 
+        @section('flashMessages')
+            @include('layouts.flashMessages')
+        @show
+
         @yield('content')
 
         <div class="container-fluid">
-            <div class="col-md-6 col-md-offset-3">
-                <div class="well well-sm text-center">
-                    CopyRights @ {{ date('Y') }} . All Right Reserved by <a href="http://rpshah96.me"> rpshah96.me</a>
+            <div class="row">
+                <div class="col-md-6 col-md-offset-3">
+                    <div class="well well-sm text-center">
+                        CopyRights @ {{ date('Y') }} . All Right Reserved by <a href="http://rpshah96.me"> rpshah96.me</a>
+                    </div>
                 </div>
             </div>
         </div>

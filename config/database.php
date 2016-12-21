@@ -56,9 +56,9 @@ return array(
                 'mysql' => array(
                         'driver'    => 'mysql',
                         'host'      => 'localhost',
-                        'database'  => 'nawgkqebga',
-                        'username'  => 'nawgkqebga',
-                        'password'  => '4rhnaDMkFe',
+                        'database'  => 'rpshah_blogging',
+                        'username'  => 'rpshah',
+                        'password'  => 'rpshah96',
                         'charset'   => 'utf8',
                         'collation' => 'utf8_unicode_ci',
                         'prefix'    => '',

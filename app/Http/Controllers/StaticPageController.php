@@ -9,6 +9,17 @@ use Illuminate\Support\Facades\Route;
 class StaticPageController extends Controller
 {
 	/**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        //$this->middleware('auth')->except(['showBlogsPage']);
+    }
+
+
+	/**
 	 * Render the About Page
 	 *
 	 * @return View from \resources\views\static\about
