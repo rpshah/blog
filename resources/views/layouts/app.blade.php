@@ -19,21 +19,26 @@
 
     @section('stylesheets')
       <!-- Latest compiled and minified CSS -->
-      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+      <!--link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"-->
+      <link rel="stylesheet" type="text/css" href="/css/app.css">
+
       <link rel="stylesheet" type="text/css" href="/css/style.css">
+      
     @show
 
     @section('scripts')
       <!-- jQuery library -->
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
       <!-- Latest compiled JavaScript -->
-      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+      <!--script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script-->
+
+      <script src="/js/app.js"></script>
     @show
 
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-inverse navbar-static-top">
+        <nav class="navbar navbar-default navbar-fixed-top">
             <div class="container">
                 <div class="navbar-header">
 
@@ -46,7 +51,7 @@
                     </button>
 
                     <!-- Branding Image -->
-                    <a class="navbar-brand" href="{{ url('/') }}">
+                    <a class="navbar-brand" href="{{ url('/') }}" style="color: #fff;">
                         {{ config('app.name', 'RPSHAH96.me') }}
                     </a>
                 </div>
@@ -54,13 +59,13 @@
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
-                        <li class="{{ Request::is('post/2') ? "active" : "" }}"><a href="#">Read </a></li>
+                        <li class="{{ Request::is('post/2') ? "active" : "" }}"><a href="#" style="color: #fff;">Read </a></li>
                         @if (Auth::check())
                             <li class="{{ Request::is('post') ? "active" : "" }}" >
-                                <a href="{{ route('post.index') }}">My Blogs</a>
+                                <a href="{{ route('post.index') }}" style="color: #fff;">My Blogs</a>
                             </li>
                             <li class="dropdown">
-                              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">New <span class="caret"></span></a>
+                              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="color: #fff;">New <span class="caret"></span></a>
                               <ul class="dropdown-menu">
                                 <li><a href="{{ route('post.create') }}">Post</a></li>
                                 <li><a href="#">Short News</a></li>
@@ -74,22 +79,22 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="nav navbar-nav navbar-right">
                         <li class="{{ Request::is('about') ? "active" : "" }}">
-                            <a href="{{ url('/about') }}">About </a>
+                            <a href="{{ url('/about') }}" style="color: #fff;">About </a>
                         </li>
                         <li class="{{ Request::is('contact') ? "active" : "" }}">
-                            <a href="{{ url('/contact') }}">Contact </a>
+                            <a href="{{ url('/contact') }}" style="color: #fff;">Contact </a>
                         </li>
                         <!-- Authentication Links -->
                         @if (Auth::guest())
                             <li class="{{ Request::is('login') ? "active" : "" }}">
-                                <a href="{{ url('/login') }}">Login</a>
+                                <a href="{{ url('/login') }}" style="color: #fff;">Login</a>
                             </li>
                             <li class="{{ Request::is('register') ? "active" : "" }}">
-                                <a href="{{ url('/register') }}">Register</a>
+                                <a href="{{ url('/register') }}" style="color: #fff;">Register</a>
                             </li>
                         @else
                             <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" style="color: #fff;">
                                     {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
 
@@ -118,7 +123,6 @@
         @show
 
         @yield('content')
-
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-6 col-md-offset-3">
